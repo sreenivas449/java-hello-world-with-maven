@@ -19,7 +19,7 @@ pipeline{
         }
         stage('copying the artifact'){
             steps{
-                stash includes: 'target/jb-hello-world-maven-0.2.0.jar', name: 'stash-jar'
+                stash includes: 'jb-hello-world-maven-0.2.0.jar', name: 'stash-jar'
             }
         }
         stage('stop service'){
