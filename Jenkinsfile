@@ -33,7 +33,9 @@ pipeline{
                 dir('C:\\tomcats\\DEV\\apache-tomcat-8.5.76\\webapps') {
                 unstash 'stash-jar'
                 bat '''
-                copy C:\\tomcats\\DEV\\apache-tomcat-8.5.76\\webapps\\target\\jb-hello-world-maven-0.2.0.jar  C:\\tomcats\\DEV\\apache-tomcat-8.5.76\\webapps\\
+                del *.war
+                del *.jar
+                copy C:\\tomcats\\DEV\\apache-tomcat-8.5.76\\webapps\\target\\jb-hello-world-maven-0.*.jar  C:\\tomcats\\DEV\\apache-tomcat-8.5.76\\webapps\\
                 '''
             }
 
