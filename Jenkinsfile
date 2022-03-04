@@ -19,7 +19,7 @@ pipeline{
         }
         stage('copying the artifact'){
             steps{
-                stash includes: 'jb-hello-world-maven-0.2.0.jar', name: 'stash-jar'
+                stash includes: 'target/jb-hello-world-maven-0.2.0.jar', name: 'stash-jar'
             }
         }
         stage('stop service'){
@@ -32,6 +32,9 @@ pipeline{
             steps{
                 dir('C:\\tomcats\\DEV\\apache-tomcat-8.5.76\\webapps') {
                 unstash 'stash-jar'
+                bat '''
+                copy C:\\tomcats\\DEV\\apache-tomcat-8.5.76\\webapps\\target\\jb-hello-world-maven-0.2.0.jar  C:\\tomcats\\DEV\\apache-tomcat-8.5.76\\webapps\\
+                '''
             }
 
             }
